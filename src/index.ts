@@ -1,3 +1,6 @@
-console.log("to rodando");
+import { UserController } from "./Controller/UserController";
+import app from "./Services/app";
 
-//roda carai
+const userController = new UserController()
+
+app.post("/login", userController.login)
