@@ -1,6 +1,6 @@
-import { BaseDataBase } from "./BaseDatabase";
+import { BaseDatabase } from "./BaseDatabase";
 
-export default class BandCreatedData extends BaseDataBase {
+export default class BandCreatedData extends BaseDatabase {
     protected TABLE_NAME = 'Bandas'
 
     insert = async (band: any) => {
