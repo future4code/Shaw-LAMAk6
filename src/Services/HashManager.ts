@@ -1,6 +1,5 @@
 import * as bcrypt from 'bcryptjs';
 
-
 export class HashManager {
   hash = async (plainText: string) => {
     const rounds = Number(process.env.BCRYPT_COST);
