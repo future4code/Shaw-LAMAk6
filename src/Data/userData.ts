@@ -26,9 +26,9 @@ export class UserData extends BaseDatabase {
 
         } catch (error:any) {
            throw new Error(error.message);
-
+           
         }
-
+        
     }
-
+    
 }
