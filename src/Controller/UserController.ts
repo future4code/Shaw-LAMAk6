@@ -24,7 +24,7 @@ export class UserController {
 
             const {email, password} = req.body
 
-            const response = await userBusiness.login(email, password)
+            const response = await userBusiness.Login(email, password)
 
             res.send(`User createde,${response}`)
             

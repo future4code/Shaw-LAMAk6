@@ -1,4 +1,4 @@
-import BandCreatedData from '../Data/userData'
+import BandCreatedData from '../Data/BandData'
 import { CreateBand, CreateBandUser } from '../Models/CreateBand'
 import { IdGenerate } from '../Services/idGenerate'
 

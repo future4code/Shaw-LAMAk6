@@ -4,7 +4,7 @@ import { UserController } from "./Controller/UserController";
 import { CreateBandController } from "./Controller/CreateBandController";
 import { IdGenerate } from "./Services/idGenerate";
 import CreateBandBusiness from "./Business/CreateBandBusiness";
-import BandCreatedData from "./Data/UserData";
+import BandCreatedData from "./Data/BandData";
 
 const bandController = new CreateBandController(
     new CreateBandBusiness(
