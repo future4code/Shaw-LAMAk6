@@ -1,8 +1,8 @@
 import { User } from "../Models/User";
-import { BaseDataBase } from "./BaseDatabase";
+import { BaseDatabase } from "./BaseDatabase";
 
 
-export class UserData extends BaseDataBase {
+export class UserData extends BaseDatabase {
     signup = async (user:User) => {
         await this.connection("Users_music")
         .insert({
