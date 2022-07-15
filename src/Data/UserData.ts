@@ -4,18 +4,31 @@ import { BaseDatabase } from "./BaseDatabase";
 
 export class UserData extends BaseDatabase {
 
-    selectUserByEmail = async (email: string) => {
+    signup = async (user:User) => {
+        await this.connection("Users_music")
+        .insert({
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            password: user.password,
+            role: user.role
+        })
+    }
+
+    selectUserByEmail = async (email:string) => {
+
         try {
 
-            const response = await this.connection("Users_music")
-                .where({ email: email })
+        const response = await this.connection("Users_music")
+        .where({email:email})
 
-            return response[0]
+        return response[0]
 
-        } catch (error: any) {
-            throw new Error(error.message);
-
+        } catch (error:any) {
+           throw new Error(error.message);
+           
         }
-
+        
     }
+    
 }

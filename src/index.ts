@@ -1,3 +1,4 @@
+
 import app from "./Services/app";
 import { UserController } from "./Controller/UserController";
 import { CreateBandController } from "./Controller/CreateBandController";
@@ -12,11 +13,13 @@ const bandController = new CreateBandController(
     )
 )
 
+
 const userController = new UserController()
 
 
-
+app.post("/signup", userController.signup)
 
 app.post("/login", userController.login)
 
 app.post('/band', bandController.createBand )
+
