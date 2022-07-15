@@ -1,8 +1,9 @@
-import CreateBandBusiness from "./Business/CreateBandBusiness";
-import { CreateBandController } from "./Controller/CreateBandController";
-import BandCreatedData from "./Data/userData";
 import app from "./Services/app";
+import { UserController } from "./Controller/UserController";
+import { CreateBandController } from "./Controller/CreateBandController";
 import { IdGenerate } from "./Services/idGenerate";
+import CreateBandBusiness from "./Business/CreateBandBusiness";
+import BandCreatedData from "./Data/UserData";
 
 const bandController = new CreateBandController(
     new CreateBandBusiness(
@@ -11,5 +12,11 @@ const bandController = new CreateBandController(
     )
 )
 
+const userController = new UserController()
+
+
+
+
+app.post("/login", userController.login)
 
 app.post('/band', bandController.createBand )
