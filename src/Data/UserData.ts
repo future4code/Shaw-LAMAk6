@@ -3,6 +3,7 @@ import { BaseDatabase } from "./BaseDatabase";
 
 
 export class UserData extends BaseDatabase {
+
     signup = async (user:User) => {
         await this.connection("Users_music")
         .insert({
@@ -29,7 +30,5 @@ export class UserData extends BaseDatabase {
         }
         
     }
-
-
-
+    
 }

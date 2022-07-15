@@ -3,7 +3,6 @@ import dotenv from "dotenv"
 
 dotenv.config()
 
-
 export class HashManager{
     hash = async (plainText: string) => {
       const rounds = Number(process.env.BCRYPT_COST);
@@ -15,3 +14,6 @@ export class HashManager{
       return bcrypt.compare(plainText, cypherText)
     }
   }
+
+
+

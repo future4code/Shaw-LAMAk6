@@ -4,10 +4,12 @@ import { Authenticator } from "../Services/Authenticator";
 import { HashManager } from "../Services/HashManager";
 import { IdGenerate } from "../Services/idGenerate";
 
+
 const idGenerate = new IdGenerate()
 const userData = new UserData()
 const authenticator = new Authenticator()
 const hashManager = new HashManager()
+
 
 export class UserBusiness {
     signup = async (name: string, email:string, password: string, role: Role) => {
@@ -53,10 +55,24 @@ export class UserBusiness {
 
 
     }
+    
+     Login = async (email: string, password: string  ) => {
+
+        if (!email) {
+            throw new Error("Enter a Email");
+        }
+        if (!password) {
+            throw new Error("Enter a Password");
+        }
+
+        const user = await userData.selectUserByEmail(email)
+
+        const token = authenticator.generateToken({id: user.id})
+
+        return token
+    }
 }
 
 
-
-
-
+   
 
