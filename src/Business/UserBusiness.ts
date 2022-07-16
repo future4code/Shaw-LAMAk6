@@ -36,6 +36,10 @@ export class UserBusiness {
             throw new Error("Enter a role");    
         }
 
+        if(role != Role.ADMIN || Role.NORMAL){
+            throw new Error("The role must be Admin or Normal");    
+        }
+
         const id = idGenerate.generateId()
         const hashPassword = await hashManager.hash(password) 
 
