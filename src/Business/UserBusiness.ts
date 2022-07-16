@@ -1,4 +1,4 @@
-import { UserData } from "../Data/UserData";
+import { UserData } from "../Data/userData";
 import { Role } from "../Models/User";
 import { Authenticator } from "../Services/Authenticator";
 import { HashManager } from "../Services/HashManager";
@@ -36,7 +36,7 @@ export class UserBusiness {
             throw new Error("Enter a role");    
         }
 
-        if(role != Role.ADMIN || Role.NORMAL){
+        if(role != Role.ADMIN && Role.NORMAL){
             throw new Error("The role must be Admin or Normal");    
         }
 

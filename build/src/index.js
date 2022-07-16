@@ -1,2 +1,25 @@
 "use strict";
-console.log("to rodando");
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const app_1 = require("./Services/app");
+const UserController_1 = require("./Controller/UserController");
+const CreateBandController_1 = require("./Controller/CreateBandController");
+const idGenerate_1 = require("./Services/idGenerate");
+const CreateBandBusiness_1 = __importDefault(require("./Business/CreateBandBusiness"));
+const BandData_1 = __importDefault(require("./Data/BandData"));
+const AddShowController_1 = require("./Controller/AddShowController");
+const DetailsBandController_1 = require("./Controller/DetailsBandController");
+const GetShowFoDayController_1 = require("./Controller/GetShowFoDayController");
+const bandController = new CreateBandController_1.CreateBandController(new CreateBandBusiness_1.default(new BandData_1.default(), new idGenerate_1.IdGenerate()));
+const userController = new UserController_1.UserController();
+const detailsBandController = new DetailsBandController_1.DetailsBandController;
+const addShow = new AddShowController_1.AddShowController();
+const showForDay = new GetShowFoDayController_1.GetShowForDayController();
+app_1.app.post("/signup", userController.signup);
+app_1.app.post("/login", userController.login);
+app_1.app.post('/band', bandController.createBand);
+app_1.app.get("/details", detailsBandController.getBand);
+app_1.app.post("/addShow/byhour", addShow.addShow);
+app_1.app.get("/dayshows", showForDay.GetShowForDay);

@@ -9,31 +9,37 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserController = void 0;
-const UserBusiness_1 = require("../Business/UserBusiness");
-const userBusiness = new UserBusiness_1.UserBusiness();
-class UserController {
+const BaseDatabase_1 = require("./BaseDatabase");
+class BandCreatedData extends BaseDatabase_1.BaseDatabase {
     constructor() {
-        this.signup = (req, res) => __awaiter(this, void 0, void 0, function* () {
+        super(...arguments);
+        this.TABLE_NAME = 'Bandas';
+        this.insert = (band) => __awaiter(this, void 0, void 0, function* () {
             try {
-                const { name, email, password, role } = req.body;
-                const response = yield userBusiness.signup(name, email, password, role);
-                res.send({ message: "User createde", response });
+                const response = yield this.connection(this.TABLE_NAME)
+                    .insert(band);
+                return response;
             }
             catch (error) {
-                res.status(500).send(error.sqlMessage || error.message);
+                if (error instanceof Error) {
+                    throw new Error(error.message);
+                }
+                else {
+                    throw new Error('Erro');
+                }
             }
         });
-        this.login = (req, res) => __awaiter(this, void 0, void 0, function* () {
+        this.findByBand = (name) => __awaiter(this, void 0, void 0, function* () {
             try {
-                const { email, password } = req.body;
-                const response = yield userBusiness.Login(email, password);
-                res.send({ message: "logged in user", response });
+                const queryResult = yield this.connection(this.TABLE_NAME)
+                    .select()
+                    .where({ name });
+                return queryResult[0];
             }
             catch (error) {
-                res.status(500).send(error.sqlMessage || error.message);
+                throw new Error();
             }
         });
     }
 }
-exports.UserController = UserController;
+exports.default = BandCreatedData;
