@@ -1,5 +1,5 @@
 import { AddShowData } from "../Data/AddShowData";
-import { Day } from "../Models/show";
+import { Day } from "../Models/Show";
 import { IdGenerate } from "../Services/idGenerate";
 
 const showData = new AddShowData()

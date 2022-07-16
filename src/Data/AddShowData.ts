@@ -1,4 +1,4 @@
-import { Show } from "../Models/show"
+import { Show } from "../Models/Show"
 import { BaseDatabase } from "./BaseDatabase"
 
 
