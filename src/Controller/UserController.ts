@@ -11,7 +11,7 @@ export class UserController {
 
             const response = await userBusiness.signup(name, email,password, role)
 
-            res.send(response)
+            res.send({message: "User createde", response})
             
         } catch (error:any) {
             res.status(500).send(error.sqlMessage || error.message)
@@ -26,7 +26,7 @@ export class UserController {
 
             const response = await userBusiness.Login(email, password)
 
-            res.send(`User createde,${response}`)
+            res.send({message: "logged in user", response})
             
         } catch (error:any) {
             res.status(500).send(error.sqlMessage || error.message)
