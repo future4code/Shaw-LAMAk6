@@ -35,18 +35,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.compare = exports.hash = void 0;
+exports.HashManager = void 0;
 const bcrypt = __importStar(require("bcryptjs"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-const hash = (text) => __awaiter(void 0, void 0, void 0, function* () {
-    const rounds = Number(process.env.BCRYPT_COST);
-    const salt = yield bcrypt.genSalt(rounds);
-    const result = yield bcrypt.hash(text, salt);
-    return result;
-});
-exports.hash = hash;
-const compare = (text, hash) => __awaiter(void 0, void 0, void 0, function* () {
-    return bcrypt.compare(text, hash);
-});
-exports.compare = compare;
+class HashManager {
+    constructor() {
+        this.hash = (plainText) => __awaiter(this, void 0, void 0, function* () {
+            const rounds = Number(process.env.BCRYPT_COST);
+            const salt = yield bcrypt.genSalt(rounds);
+            return bcrypt.hash(plainText, salt);
+        });
+        this.compare = (plainText, cypherText) => {
+            return bcrypt.compare(plainText, cypherText);
+        };
+    }
+}
+exports.HashManager = HashManager;
