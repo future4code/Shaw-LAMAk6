@@ -1,4 +1,4 @@
-import { UserData } from "../Data/userData";
+import { UserData } from "../Data/UserData";
 import { Role } from "../Models/User";
 import { Authenticator } from "../Services/Authenticator";
 import { HashManager } from "../Services/HashManager";
