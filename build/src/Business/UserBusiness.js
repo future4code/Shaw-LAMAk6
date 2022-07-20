@@ -10,13 +10,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserBusiness = void 0;
-const userData_1 = require("../Data/userData");
+const UserData_1 = require("../Data/UserData");
 const User_1 = require("../Models/User");
 const Authenticator_1 = require("../Services/Authenticator");
 const HashManager_1 = require("../Services/HashManager");
 const idGenerate_1 = require("../Services/idGenerate");
 const idGenerate = new idGenerate_1.IdGenerate();
-const userData = new userData_1.UserData();
+const userData = new UserData_1.UserData();
 const authenticator = new Authenticator_1.Authenticator();
 const hashManager = new HashManager_1.HashManager();
 class UserBusiness {
