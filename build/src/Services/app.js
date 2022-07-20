@@ -11,7 +11,7 @@ dotenv_1.default.config();
 exports.app = (0, express_1.default)();
 exports.app.use(express_1.default.json());
 exports.app.use((0, cors_1.default)());
-const server = exports.app.listen(process.env.PORT || 3003, () => {
+const server = exports.app.listen(process.env.PORT, () => {
     if (server) {
         const address = server.address();
         console.log(`Server is running in http://localhost:${address.port}`);
